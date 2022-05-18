@@ -25,5 +25,10 @@ jobs:
       run:  |
         # install test requirements
         pip install -r requirements/requirements_test.txt
-  
+        # Build nemo as a wheel
+        pip install build
+        python -m build --no-isolation --wheel
+        # Preserve wheel location
+        DIST_FILE=$(find ./dist -name "*.whl" | head -n 1)
+        echo "::set-output name=DIST_FILE::${DIST_FILE}" 
 
