@@ -8,10 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 20
-      matrix:
-        os: [ubuntu-latest]
     container:
       image: pytorch/pytorch:1.10.0-cuda11.3-cudnn8-runtime
 
@@ -35,7 +31,6 @@ jobs:
         DIST_FILE=$(find ./dist -name "*.whl" | head -n 1)
         echo "::set-output name=DIST_FILE::${DIST_FILE}" 
 
-
     - name: Lint with flake8
       run: |
         pip install flake8
@@ -44,4 +39,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        pytest test/modules/encoder/test_conformer_encoder_nemo.py
+        pytest test/test.sh

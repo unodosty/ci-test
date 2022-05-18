@@ -1,0 +1,2 @@
+
+pytest test/modules/encoder/test_conformer_encoder_nemo.py
