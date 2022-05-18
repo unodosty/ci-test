@@ -9,7 +9,7 @@ VERSION = (MAJOR, MINOR, PATCH, PRE_RELEASE)
 __shortversion__ = ".".join(map(str, VERSION[:3]))
 __version__ = ".".join(map(str, VERSION[:3])) + "".join(VERSION[3:])
 
-__package_name__ = "E2E Personal Library"
+__package_name__ = "chrispnet"
 __contact_names__ = "Eesung Kim"
 __contact_emails__ = "eesungk@gmail.com"
 __homepage__ = ""
@@ -18,5 +18,4 @@ __download_url__ = "https://github.com/eesungkim/"
 __description__ = "Personal Library for Conversational AI"
 __license__ = "Apache2"
 __keywords__ = ""
-
 
