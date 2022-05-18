@@ -8,6 +8,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 20
+      matrix:
+        os: [ubuntu-latest]
     container:
       image: pytorch/pytorch:1.10.0-cuda11.3-cudnn8-runtime
 
@@ -31,17 +35,13 @@ jobs:
         DIST_FILE=$(find ./dist -name "*.whl" | head -n 1)
         echo "::set-output name=DIST_FILE::${DIST_FILE}" 
 
-    - name: Install git lfs
-      run: |
-        sudo apt-get install -y git-lfs
 
     - name: Lint with flake8
       run: |
         pip install flake8
         flake8 .
       continue-on-error: true
-      
+
     - name: Run Tests
-      shell: bash
       run: |
         pytest test/modules/encoder/test_conformer_encoder_nemo.py
