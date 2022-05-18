@@ -5,17 +5,17 @@ from chrispnet.modules.encoder.conformer_encoder import ConformerEncoder
 
 
 @pytest.mark.parametrize("input_size", [80])
-@pytest.mark.parametrize("n_layers", [2, 4])
-@pytest.mark.parametrize("d_model", [256, 512])
+@pytest.mark.parametrize("n_layers", [1, 2])
+@pytest.mark.parametrize("d_model", [256])
 @pytest.mark.parametrize("feat_out", [-1])
 @pytest.mark.parametrize("subsampling", ["striding", "vggnet"])
-@pytest.mark.parametrize("subsampling_factor", [4, 6, 8])
+@pytest.mark.parametrize("subsampling_factor", [4, 8])
 @pytest.mark.parametrize("subsampling_conv_channels", [-1])
 @pytest.mark.parametrize("ff_expansion_factor", [4])
 @pytest.mark.parametrize("self_attention_model", ["rel_pos"])
 @pytest.mark.parametrize("n_heads", [4])
 @pytest.mark.parametrize("att_context_size", [[-1, -1], [5, 0]])
-@pytest.mark.parametrize("conv_kernel_size", [31, 15, 7])
+@pytest.mark.parametrize("conv_kernel_size", [31, 7])
 @pytest.mark.parametrize("conv_norm_type", ["batch_norm", "layer_norm"])
 def test_Encoder_forward_backward(
     input_size,
