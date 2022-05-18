@@ -193,20 +193,11 @@ if __name__ == "__main__":
         conv_channels=256,
     )
 
-    # model = StackingSubsampling(subsampling_factor=4, feat_in=D_feats, feat_out=256)
-
     spect = torch.randn(B, T, D_feats)
 
-    # feats = torch.transpose(feats, 1, 2)
-    # feats_mask = torch.randn(B)
     spect_length_mask = torch.Tensor([1600, 324, 1, 666])
-    # feats_mask = torch.Tensor([1600])
-    print(
-        spect.shape, spect_length_mask
-    )  # torch.Size([4, 1600, 80]) tensor([1.6000e+03, 3.2400e+02, 1.0000e+00, 6.6600e+02])
+    print(spect.shape, spect_length_mask)
     subsampling_output, subsampling_length_mask, = model.forward(
         spect, spect_length_mask
     )
-    print(
-        subsampling_output.shape, subsampling_length_mask
-    )  # torch.Size([4, 400, 256]) tensor([400,  81,   1, 167], dtype=torch.int32)
+    print(subsampling_output.shape, subsampling_length_mask)
