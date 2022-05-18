@@ -32,3 +32,7 @@ jobs:
         DIST_FILE=$(find ./dist -name "*.whl" | head -n 1)
         echo "::set-output name=DIST_FILE::${DIST_FILE}" 
 
+    - name: Run Tests
+      shell: bash
+      run: |
+        pytest test/modules/encoder/test_conformer_encoder_nemo.py
